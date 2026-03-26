@@ -1,23 +1,28 @@
 import random
 
-words = [
-"python",
-"programa",
-"variable",
-"funcion",
-"bucle",
-"cadena",
-"entero",
-"lista",
-]
+categorias = {
+    "lenguajes" : ["python", "javascript"], 
+    "programacion" : ["programa", "variable", "funcion", "bucle"],
+    "tipos de datos" : ["entero", "lista", "cadena"]
+}
 
-word = random.choice(words)
 guessed = []
 attempts = 6
 score = 0 # Puntuacion
 
 print("¡Bienvenido al Ahorcado!")
 print()
+
+# Imprime en pantalla las categorias
+for clave in categorias:
+    print(f"{clave}")
+print()
+opcion = input("Ingrese una categoria: ")
+# En caso de Opcion invalida
+while opcion not in categorias: 
+    opcion = input("Esa opcion no es valida. Por favor ingresar otra: ")
+word = random.choice(categorias[opcion])
+
 while attempts > 0:
     # Mostrar progreso actual -> (letras correctas y guiones para las pendientes o faltantes)
     progress = ""
